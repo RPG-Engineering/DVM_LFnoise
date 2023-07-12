@@ -8,9 +8,9 @@ DVM.timeout = 10000   # in ms
 
 DVM.write("DCLX")      # clear to default settings
 DVM.write("RENX")      # Remote mode
-DVM.write("U2")      # Get firmware test
+DVM.write("U2X")      # Get firmware test
 print("Keithley 182 Firmware:")
-print(read_data("X"))
+print(DVM.read())
 
 DVM.write("B1X")      # 6.5 digit resolution
 DVM.write("I2X")      # Circular buffer on, length = 1024
