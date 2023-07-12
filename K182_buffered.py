@@ -34,7 +34,7 @@ while True:           # start reading perhaps?
     print("VVVVVVVVVVVVV,BufP,second, ms")
     print(reading)
     timestamp=float(reading.split(',')[2].strip())
-    time_difference = timestamp-last_time
+    time_difference = last_time-timestamp
     print("Seconds between this and the last reading:")
     print(time_difference)
     last_time = timestamp
