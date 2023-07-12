@@ -29,14 +29,14 @@ DVM.write("Z1X")      # Relative readings
 
 f = open('k182_short_anfilt_100ms.csv', 'w')
 writer = csv.writer(f)
-header = ['time', 'volt', ]
+header = ['seconds', 'volt', ]
 writer.writerow(header)
 
 python_start_time = time.time()
 
 while True:
     reading=float(DVM.read())
-    timestamp = python_start_time-time.time()
+    timestamp = time.time()-python_start_time
     row = [timestamp, reading, ]
     print(row)
     writer.writerow(row)
