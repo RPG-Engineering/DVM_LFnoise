@@ -35,13 +35,13 @@ while True:
     keithley_timestamp=float(reading.split(',')[2].strip())
     
     keithley_time_difference = keithley_timestamp-keithley_last_time
-    python_time_difference = time.time()- python_last_time
+    python_time_difference = time.time() - python_last_time
     
     print("Keithley seconds between this and the last reading:")
     print(keithley_time_difference)
     
     print("Python seconds between this and the last reading:")
-    print(python_time_difference.total_seconds())
+    print(python_time_difference)
     
     keithley_last_time = keithley_timestamp
     python_last_time = time.time()
