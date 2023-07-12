@@ -27,7 +27,10 @@ time.sleep(1024/2*.1) # wait for buffer half full
 
 while True:           # start reading perhaps?
     print("Sample from buffer:")
-    print(DVM.read())
-    print("Waiting for around one conversion before reading the next sample ...")
+    reading=DVM.read()
+    print("VVVVVVVVVVVVV,BufP,second, ms")
+    print(reading)
+    time=int(reading.split(',')[2].strip())
+    print(time)
     time.sleep(.1)
     
