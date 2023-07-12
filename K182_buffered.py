@@ -26,7 +26,7 @@ print("Waiting for the circular buffer to be half full ...")
 #time.sleep(1024/2*.1) # wait for buffer half full
 time.sleep(10) # wait for buffer half full
 
-last_time = 17.015
+last_time = 18
 
 while True:           # start reading perhaps?
     print("Sample from buffer:")
