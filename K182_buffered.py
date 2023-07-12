@@ -24,7 +24,7 @@ DVM.write("O1P0N1X")  # Enabled analog filter, disabled dig filter
 DVM.write("R1X")      # 3mV range
 DVM.write("S2X")      # 100ms integration period
 DVM.write("T7X")      # Trigger one shot external
-DVM.write("Zl")       # Relative readings
+DVM.write("ZlX")       # Relative readings
 
 f = open('k182_short_analog_filt_1hz.csv', 'w')
 writer = csv.writer(f)
@@ -35,13 +35,12 @@ python_start_time = time.time()
 python_last_time = time.time()
 
 while True:
-    reading=DVM.read()
-    print(reading)
+    reading=float(DVM.read())
     row = [reading, ]
     writer.writerow(row)
-    python_time_difference = time.time() - python_last_time
+    #python_time_difference = time.time() - python_last_time
     
-    print("Python seconds between this and the last reading:")
-    print(python_time_difference)
+    #print("Python seconds between this and the last reading:")
+    #print(python_time_difference)
 
-    python_last_time = time.time()
+    #python_last_time = time.time()
