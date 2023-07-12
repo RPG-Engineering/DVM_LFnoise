@@ -1,5 +1,5 @@
 import pyvisa as visa
-from time import time
+import time
 
 rm = visa.ResourceManager()
 
@@ -22,7 +22,7 @@ DVM.write("R1X")      # 3mV range
 DVM.write("S2X")      # 100ms integration period
 DVM.write("T4X")      # Trigger on X multiple
 
-sleep(1024/2*.1) # wait for buffer half full
+time.sleep(1024/2*.1) # wait for buffer half full
 
 while True:           # start reading perhaps?
     print(read_data("X"))
