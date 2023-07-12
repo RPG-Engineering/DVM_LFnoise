@@ -6,8 +6,8 @@ rm = visa.ResourceManager()
 DVM = rm.open_resource("TCPIP::192.168.0.88::GPIB0,8")
 DVM.timeout = 10000   # in ms
 
-DVM.write("DCL")      # clear to default settings
-DVM.write("REN")      # Remote mode
+DVM.write("DCLX")      # clear to default settings
+DVM.write("RENX")      # Remote mode
 DVM.write("U2")      # Get firmware test
 print("Keithley 182 Firmware:")
 print(read_data("X"))
