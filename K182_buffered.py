@@ -39,6 +39,6 @@ while True:
     keithley_last_time = keithley_timestamp
     
     buffer_position=int(reading.split(',')[1].strip())
-    if (buffer_position == 100):
+    if (buffer_position == 50):
         DVM.write("I1,1024X") # Linear buffer on, length = 1024
     
