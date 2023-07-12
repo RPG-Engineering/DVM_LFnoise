@@ -24,7 +24,7 @@ DVM.write("O1P0N1X")  # Enabled analog filter, disabled dig filter
 DVM.write("R1X")      # 3mV range
 DVM.write("S2X")      # 100ms integration period
 DVM.write("T7X")      # Trigger one shot external
-DVM.write("ZlX")       # Relative readings
+DVM.write("Z1X")      # Relative readings
 
 f = open('k182_short_analog_filt_1hz.csv', 'w')
 writer = csv.writer(f)
