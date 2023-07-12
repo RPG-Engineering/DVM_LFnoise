@@ -11,7 +11,7 @@ DVM.write("RENX")      # Remote mode
 DVM.write("U2X")      # Get firmware test
 print("Keithley 182 Firmware:")
 print(DVM.read())
-
+print("Configuring ...")
 DVM.write("B1X")      # 6.5 digit resolution
 DVM.write("I2X")      # Circular buffer on, length = 1024
 #DVM.write("F1G0X")   # Reading Source: One reading from buffer, reading without prefix
@@ -22,8 +22,12 @@ DVM.write("R1X")      # 3mV range
 DVM.write("S2X")      # 100ms integration period
 DVM.write("T4X")      # Trigger on X multiple
 
+print("Waiting for the circular buffer to be half full ...")
 time.sleep(1024/2*.1) # wait for buffer half full
 
 while True:           # start reading perhaps?
-    print(read_data("X"))
+    print("Sample from buffer:")
+    print(DVM.read())
+    print("Waiting for around one conversion before reading the next sample ...")
+    time.sleep(.1)
     
