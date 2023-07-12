@@ -23,14 +23,20 @@ DVM.write("S2X")      # 100ms integration period
 DVM.write("T4X")      # Trigger on X multiple
 
 print("Waiting for the circular buffer to be half full ...")
-time.sleep(1024/2*.1) # wait for buffer half full
+#time.sleep(1024/2*.1) # wait for buffer half full
+time.sleep(10) # wait for buffer half full
+
+last_time = 0.0
 
 while True:           # start reading perhaps?
     print("Sample from buffer:")
     reading=DVM.read()
     print("VVVVVVVVVVVVV,BufP,second, ms")
     print(reading)
-    time=int(reading.split(',')[2].strip())
-    print(time)
-    time.sleep(.1)
+    time=float(reading.split(',')[2].strip())
+    time_difference = time-last_time
+    print("Seconds between this and the last reading:")
+    print(time_difference)
+    last_time = time
+    time.sleep(time_difference)
     
