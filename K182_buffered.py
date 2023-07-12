@@ -33,10 +33,18 @@ while True:
     print("VVVVVVVVVVVVV,BufP,second, ms")
     print(reading)
     keithley_timestamp=float(reading.split(',')[2].strip())
+    
     keithley_time_difference = keithley_timestamp-keithley_last_time
+    python_time_difference = time.time()- python_last_time
+    
     print("Keithley seconds between this and the last reading:")
     print(keithley_time_difference)
+    
+    print("Python seconds between this and the last reading:")
+    print(python_time_difference.total_seconds())
+    
     keithley_last_time = keithley_timestamp
+    python_last_time = time.time()
     
     buffer_position=int(reading.split(',')[1].strip())
     if (buffer_position == 50):
