@@ -33,10 +33,10 @@ while True:           # start reading perhaps?
     reading=DVM.read()
     print("VVVVVVVVVVVVV,BufP,second, ms")
     print(reading)
-    time=float(reading.split(',')[2].strip())
-    time_difference = time-last_time
+    timestamp=float(reading.split(',')[2].strip())
+    time_difference = timestamp-last_time
     print("Seconds between this and the last reading:")
     print(time_difference)
-    last_time = time
+    last_time = timestamp
     time.sleep(time_difference)
     
