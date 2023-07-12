@@ -23,20 +23,22 @@ DVM.write("R1X")      # 3mV range
 DVM.write("S2X")      # 100ms integration period
 DVM.write("T4X")      # Trigger on X multiple
 
-print("Giving the buffer a small lead ...")
-time.sleep(5) # wait for buffer half full
-
-last_time = 0.0
+python_start_time = time.time()
+python_last_time = time.time()
+keithley_last_time = 0.0
 
 while True:
     print("Sample from buffer:")
     reading=DVM.read()
     print("VVVVVVVVVVVVV,BufP,second, ms")
     print(reading)
-    timestamp=float(reading.split(',')[2].strip())
-    time_difference = timestamp-last_time
-    print("Seconds between this and the last reading:")
-    print(time_difference)
-    last_time = timestamp
-    time.sleep(time_difference)
+    keithley_timestamp=float(reading.split(',')[2].strip())
+    keithley_time_difference = keithley_timestamp-keithley_last_time
+    print("Keithley seconds between this and the last reading:")
+    print(keithley_time_difference)
+    keithley_last_time = keithley_timestamp
+    
+    buffer_position=int(reading.split(',')[1].strip())
+    if (buffer_position == 1023):
+        DVM.write("I1,1024X") # Linear buffer on, length = 1024
     
